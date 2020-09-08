@@ -1,0 +1,17 @@
+<p>my-list works!</p>
+
+<div>
+    <ul class="todo" *ngFor="let item of myList$|async;">
+        <li>{{item.name}} </li><br>
+            <div>
+                <button (click)=delete(item.id)>delete</button>
+                <button>Edit</button>
+                <button  >done</button>
+            </div>
+       
+    </ul>
+    <!-- {{ myList$ | async }}
+
+
+   {{myList$ | async | json }} -->
+</div>
