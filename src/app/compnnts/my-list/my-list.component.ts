@@ -19,5 +19,7 @@ myList$ :Observable<object>
     
     this.ser.deleteItmes(id)
   }
+  edit(){}
+  done(){}
 
 }
