@@ -8,18 +8,23 @@ import { Observable } from 'rxjs';
   styleUrls: ['./my-list.component.css']
 })
 export class MyLIstComponent implements OnInit {
-myList$ :Observable<object>
+  myList$: Observable<object>
   constructor(private ser: ToDoService) { }
+
+  isHidden: boolean = true;
+  click() {
+    this.isHidden = !this.isHidden;
+  }
 
   ngOnInit(): void {
     this.myList$ = this.ser.getList();
   }
-  delete(id){
+  delete(id) {
     console.log(id);
-    
+
     this.ser.deleteItmes(id)
   }
-  edit(){}
-  done(){}
+  edit() { }
+  done() { }
 
 }

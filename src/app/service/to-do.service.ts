@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 
-export interface items{
-  id : number;
-  name:string;
-  isDone : boolean;
+export interface items {
+  id: number;
+  name: string;
+  isDone: boolean;
 }
 
 @Injectable({
@@ -13,11 +13,11 @@ export interface items{
 export class ToDoService {
 
   list$ = new BehaviorSubject<items[]>(null)
-  itme :items[] = [] 
+  itme: items[] = []
   constructor() { }
 
   addToList(v) {
-    this.itme.push({name:v, id : Math.floor(Math.random() * 10000),isDone :false})
+    this.itme.push({ name: v, id: Math.floor(Math.random() * 10000), isDone: false })
     this.list$.next(this.itme)
   }
 
@@ -27,15 +27,15 @@ export class ToDoService {
     return this.list$.asObservable()
   }
 
-  deleteItmes(id){
+  deleteItmes(id) {
+    console.log("deleteItmes", id);
+    const roomArr: any[] = this.list$.getValue();
+    roomArr.forEach((item, index) => {
+      if (item.id === id) { roomArr.splice(index, 1); }
+    });
+    this.list$.next(roomArr);
+    console.log("deleteItmes", roomArr);
+  }
 
-    for(var i = 0; i < this.list$[0].length; i++) {
-      if(this.list$[i].id == id) {
-        this.list$[i].splice(i, 1);
-        console.log("delete",this.list$[i]);
-          break;
-      }
-      console.log();
-      
-}}
+
 }

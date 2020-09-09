@@ -2,16 +2,14 @@
 
 <div>
     <ul class="todo" *ngFor="let item of myList$|async;">
-        <li>{{item.name}} </li><br>
-            <div>
-                <button (click)=delete(item.id)>delete</button>
-                <button (click)=edit() >Edit</button>
-                <button (click)=done() >done</button>
-            </div>
-       
+
+        <li [style.text-decoration]="item.isDone ? 'line-through' : 'none'" [hidden]=!isHidden>
+            <input type="checkbox" [(ngModel)]="item.isDone"> {{item.name}} </li>
+        <input type="text" [hidden]=isHidden [(ngModel)]=item.name>
+        <br>
+
+        <button (click)=delete(item.id)>delete</button>
+        <button (click)=click()>Edit</button>
+
     </ul>
-    <!-- {{ myList$ | async }}
-
-
-   {{myList$ | async | json }} -->
 </div>
