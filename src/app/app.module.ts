@@ -5,6 +5,8 @@ import { FormsModule } from '@angular/forms'
 import { AppComponent } from './app.component';
 import { ToDoListComponent } from './compnnts/to-do-list/to-do-list.component';
 import { MyLIstComponent } from './compnnts/my-list/my-list.component';
+import { HttpClientModule } from '@angular/common/http';
+import { from } from 'rxjs';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,8 @@ import { MyLIstComponent } from './compnnts/my-list/my-list.component';
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

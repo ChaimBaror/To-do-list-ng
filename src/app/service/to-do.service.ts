@@ -5,6 +5,7 @@ export interface items {
   id: number;
   name: string;
   isDone: boolean;
+  isEdit ?: boolean;
 }
 
 @Injectable({
@@ -14,10 +15,12 @@ export class ToDoService {
 
   list$ = new BehaviorSubject<items[]>(null)
   itme: items[] = []
+  cunter = 0
   constructor() { }
 
   addToList(v) {
-    this.itme.push({ name: v, id: Math.floor(Math.random() * 10000), isDone: false })
+   
+    this.itme.push({ name: v, id: ++this.cunter, isDone: false,isEdit: false })
     this.list$.next(this.itme)
   }
 

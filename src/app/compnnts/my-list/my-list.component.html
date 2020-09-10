@@ -1,15 +1,54 @@
 <p>my-list works!</p>
 
-<div>
-    <ul class="todo" *ngFor="let item of myList$|async;">
 
-        <li [style.text-decoration]="item.isDone ? 'line-through' : 'none'" [hidden]=!isHidden>
-            <input type="checkbox" [(ngModel)]="item.isDone"> {{item.name}} </li>
-        <input type="text" [hidden]=isHidden [(ngModel)]=item.name>
+
+<div *ngFor="let item of mock">
+    {{item | json}}
+    <ol class="mock api">
+
+        <li [style.text-decoration]="item.isDone ? 'line-through ' : 'none'" [hidden]=!isHidden>
+            <input type="checkbox" [(ngModel)]="item.isDone">
+            {{item.name}} </li>
         <br>
 
         <button (click)=delete(item.id)>delete</button>
-        <button (click)=click()>Edit</button>
 
-    </ul>
+        <button (click)=click()>Edit</button>
+        <!-- <input type="checkbox" [(ngModel)]="item.isEdit">  -->
+
+    </ol>
+</div>
+
+<div *ngFor="let item of myList$|async;">
+
+    <ul class="todo">
+        <span> {{item.id}} </span>
+        <span [style.text-decoration]="item.isDone ? 'line-through red' : 'none'" [hidden]=!isHidden>
+            <input type="checkbox" [(ngModel)]="item.isDone">
+            {{item.name}} </span>
+        <input type="text" [hidden]=isHidden [(ngModel)]=item.name>
+        <br>
+        <span class="rowlist">
+            <button  button type="button" class="close" aria-label="Close" (click)=delete(item.id)> 
+                <i class="fa fa-trash-o fa-lg">Delete</i> </button>
+          
+            <button class="btn btn-primary" (click)=click() [disabled]=item.isDone>Edit</button>
+            
+        </span>
+    
+
+        <!-- <input type="checkbox" [(ngModel)]="item.isEdit">  -->
+
+</ul>
+</div>
+<h2>done</h2>
+<div *ngFor="let item of myList$|async;">
+    <div *ngIf="item.isDone">
+
+        <ul>
+            <li> {{item.id}} :
+                {{item.name}}
+            </li>
+        </ul>
+    </div>
 </div>
