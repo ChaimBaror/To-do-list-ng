@@ -6,3 +6,7 @@
 .rowlist{
     /* padding-left:10%; */
 }
+.done{
+    color: rgb(236, 214, 87);
+    background: rgb(110, 107, 206)
+}
